@@ -9,6 +9,32 @@ import createReactClass from 'create-react-class';
 
 class FilteredList extends React.Component {
 
+    constructor() {
+        super()
+        this.state = {
+            initialItems: [
+                "Applesss",
+                "Broccoli",
+                "Chickenasdf",
+                "Baconujf",
+                "Eggsasdfg",
+                "Salmonasdg",
+                "Granolatujh",
+                "Bananasgj",
+                "Beertew",
+                "Wineqwesdry",
+                "Yogurtaeryh",
+                "Applesaerh",
+                "Broccolissah",
+                "Chickenasd",
+                "Baconukj",
+                "Eggsdj"
+            ],
+            items: []
+        } //or whatever
+    }
+
+
     filterList(event) {
         var updatedList = this.state.initialItems;
         updatedList = updatedList.filter(function (item) {
@@ -18,28 +44,6 @@ class FilteredList extends React.Component {
         this.setState({items: updatedList});
     }
 
-
-
-
-    getInitialState() {
-        return {
-            initialItems: [
-                "Apples",
-                "Broccoli",
-                "Chicken",
-                "Bacon",
-                "Eggs",
-                "Salmon",
-                "Granola",
-                "Bananas",
-                "Beer",
-                "Wine",
-                "Yogurt"
-            ],
-            items: []
-        }
-    }
-
     componentWillMount() {
         this.setState({items: this.state.initialItems})
     }
@@ -47,7 +51,7 @@ class FilteredList extends React.Component {
     render() {
         return (
             <div className="filter-list">
-                <input type="text" placeholder="Search" onChange={this.filterList}/>
+                <input type="text" placeholder="Search" onChange={this.filterList.bind(this)}/>
                 <List items={this.state.items}/>
             </div>
         );
